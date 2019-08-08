@@ -1,0 +1,2 @@
+rtl/ib_mul/ib_mul_8x8_s0_l0.v
+verif/tb/ib_mul/ib_mul_8x8_s0_l0_tb.v

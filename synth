@@ -1,0 +1,19 @@
+#!/bin/bash
+A="$(cut -d'/' -f1 <<<"$1")"
+B="$(cut -d'/' -f2 <<<"$1")"
+C="$(cut -d'/' -f3 <<<"$1")"
+
+echo "========================================================"
+echo "Running synth..."
+rm -f syn.log
+yosys -p 'synth_ice40 -top '$C' -blif iceBench.blif' rtl/$B/$C.v  > syn.log
+cat syn.log | grep -A20 statistics
+echo "========================================================"
+echo "Running place and route..."
+rm -f blif.log
+yosys -o iceBench.syn.v iceBench.blif > blif.log
+arachne-pnr -d 1k -q -p etc/$B/$C/pinout.pcf iceBench.blif -o iceBench.asc 
+echo "========================================================"
+echo "Running Timing check..."
+icetime -tmd hx1k iceBench.asc > iceBench.time
+cat iceBench.time | grep -A20 "Total path delay"

@@ -1,0 +1,16 @@
+#!/bin/bash
+CMD="iverilog -o iceBench.dat -c $1filelist.txt"
+echo $CMD
+$CMD
+
+CMD="vvp iceBench.dat -vcd "
+echo $CMD
+$CMD 
+
+# Load waves for a single test
+WAVES="w"
+if [ "$2" == "$WAVES" ] ; then
+   CMD="gtkwave -S $1signals.tcl iceBench.vcd"
+   echo $CMD
+   $CMD
+fi

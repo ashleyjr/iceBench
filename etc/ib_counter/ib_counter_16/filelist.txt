@@ -1,0 +1,2 @@
+rtl/ib_counter/ib_counter_16.v
+verif/tb/ib_counter/ib_counter_16_tb.v

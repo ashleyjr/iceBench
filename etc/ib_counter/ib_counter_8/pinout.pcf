@@ -1,0 +1,12 @@
+set_io o_c[0]     78 
+set_io o_c[1]     79
+set_io o_c[2]     80
+set_io o_c[3]     81  
+set_io o_c[4]     87
+set_io o_c[5]     88
+set_io o_c[6]     90
+set_io o_c[7]     91
+
+set_io i_clk      12
+set_io i_nrst     8
+
